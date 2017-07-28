@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="emp_crud" namespace="/" extends="struts-default">
+	
+			<global-results>
+				<result name="error" type="redirect">/error.jsp</result>
+			</global-results>
+			
+			<!-- 响应
+			emp_find_findAll  emp_find_findById  emp_find_findByName
+			 -->
+			<action name="emp_find_*" class="com.company.action.EmpAction" method="{1}">
+				<result name="success" type="dispatcher">/emp_findAll.jsp</result>
+				<result name="updatesuccess" type="dispatcher">/emp_update.jsp</result>
+			</action>
+			<!-- 使用通配符* ，简化struts.xml的配置
+			要求，使用通配符时，必须写明跳转注释
+			emp_save  emp_delete  emp_update
+			 -->	
+			<action name="emp_*" class="com.company.action.EmpAction" method="{1}">
+				<result name="success" type="redirectAction">emp_find_findAll</result>
+			</action>
+				
+	</package>
+  
+</struts>

@@ -1,0 +1,27 @@
+package com.company.dao.factory;
+
+import com.company.dao.idao.IEmpDao;
+import com.company.dao.idao.ILoginDao;
+import com.company.dao.idao.IProductDao;
+import com.company.dao.idao.IReportDao;
+import com.company.dao.impl.DaoEmpImpl;
+import com.company.dao.impl.DaoLoginImpl;
+import com.company.dao.impl.DaoProductImpl;
+import com.company.dao.impl.DaoReportImpl;
+
+public class DaoFactory {
+	public static IProductDao getProductInstance() {
+		return new DaoProductImpl();
+	}
+
+	public static ILoginDao getLoginInstance() {
+		return new DaoLoginImpl();
+	}
+
+	public static IReportDao getReportInstance() {
+		return new DaoReportImpl();
+	}
+	public static IEmpDao getEmpInstance() {
+		return new DaoEmpImpl();
+	}
+}
